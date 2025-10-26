@@ -1,17 +1,22 @@
 package racingcar.controller;
 
-public class RaceCar {
-    private String carNames;
-    private int tryNumber;
+import racingcar.model.RacingCar;
+import racingcar.model.RacingGame;
+import racingcar.view.Input;
 
-
-    String returnCarNames() {
-        return carNames;
+public class RacingCarController {
+    RacingCar car = new RacingCar(Input.getCarNames());
+    RacingGame game = new RacingGame(Input.getGameTryNumber());
+    
+    public String getCarNames() {
+        return car.getCarNames();
     }
 
-    int returnTryNumber() {
-        return tryNumber;
+    public String[] getCarArray() {
+        return car.getCarNameArray();
     }
 
-
+    public int getGameTryNumber() {
+        return game.getGameTryNumber();
+    }
 }
