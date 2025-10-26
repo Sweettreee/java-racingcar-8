@@ -26,7 +26,7 @@ public class InputOutputTest extends IOTest {
     @Test
     void 입력값_유효_테스트() {
         // given
-        String testString = "car1, car2, car3";
+        String testString = "car1,car2,car3";
         int testNumber = 3;
 
         // when
