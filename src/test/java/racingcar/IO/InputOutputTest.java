@@ -24,9 +24,9 @@ public class InputOutputTest extends IOTest {
     }
 
     @Test
-    void 입력값_유효_테스트() {
+    void 입력값_변수로_받기_테스트() {
         // given
-        String testString = "car1,car2,car3";
+        String testString = "carcar1,car2,car3";
         int testNumber = 3;
 
         // when
@@ -38,11 +38,29 @@ public class InputOutputTest extends IOTest {
         assertThat(gameTryNumber).isEqualTo(testNumber);
     }
 
+    // 고민해 봐야할 점 : 유효하지 않는 입력값의 정의가 무엇일까?
+    // 글자 수 5미만 -> 무조건 유효?
+    @Test
+    void 입력값_유효_테스트() {
+        // given
+        String testString = "car1,car2,car3";
+
+        // when
+        boolean isValidated = racingCarController.isNameUnderFive();
+
+        // then
+        assertThat(isValidated).isTrue();
+    }
+
     @Test
     void 구분자파싱_테스트() {
+        // given
         String[] testArray = {"car1", "car2", "car3"};
 
+        // when
         String[] simulatedArray = racingCarController.getCarArray();
+
+        // then
         assertThat(simulatedArray).isEqualTo(testArray);
     }
 
