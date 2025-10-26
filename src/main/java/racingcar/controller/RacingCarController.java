@@ -7,7 +7,7 @@ import racingcar.view.Input;
 public class RacingCarController {
     RacingCar car = new RacingCar(Input.getCarNames());
     RacingGame game = new RacingGame(Input.getGameTryNumber());
-    
+
     public String getCarNames() {
         return car.getCarNames();
     }
@@ -18,5 +18,9 @@ public class RacingCarController {
 
     public int getGameTryNumber() {
         return game.getGameTryNumber();
+    }
+
+    public boolean isNameUnderFive() {
+        return car.isUnderFive();
     }
 }
