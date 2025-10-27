@@ -50,8 +50,4 @@ public class RacingCar {
             carScore.set(i, makeMove(randomNumber[i]) + tmp);
         }
     }
-
-//    public String getFinalWinner() {
-//
-//    }
 }
