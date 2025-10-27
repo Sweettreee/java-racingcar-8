@@ -25,13 +25,17 @@ public class GameTest extends IOTest {
     }
 
     @Test
-    void 전진_테스트() {
+    void 전진_테스트_및_레이싱카_점수_업데이트() {
+        int[] testNumber = {4, 7, 1};
+        int[] testScore = {1, 1, 0};
+        int testGameTryNumber = 1;
 
+        racingCarController.makeMoves(testNumber, testGameTryNumber);
+
+        int[] simulatedNumber = racingCarController.getCarScore();
+
+        for (int i = 0; i < 1; i++) {
+            assertThat(simulatedNumber[i]).isEqualTo(testScore[i]);
+        }
     }
-
-    @Test()
-    void 레이싱카_업데이트_테스트() {
-
-    }
-
 }
