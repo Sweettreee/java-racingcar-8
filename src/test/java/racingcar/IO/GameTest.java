@@ -55,8 +55,7 @@ public class GameTest extends IOTest {
         String testResult = "car1, car2";
 
         // when
-        racingCarController.getFinalWinner(testNames, testScore);
-        String Winners = racingCarController.concatWinners();
+        String Winners = racingCarController.getFinalWinner(testNames, testScore);
 
         // then
         assertThat(Winners)

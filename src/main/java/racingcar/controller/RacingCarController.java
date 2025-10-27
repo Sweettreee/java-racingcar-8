@@ -34,8 +34,8 @@ public class RacingCarController {
         return car.getCarScore();
     }
 
-    public void isNameUnderFive() {
-        car.isUnderFive();
+    public boolean isNameUnderFive() {
+        return car.isUnderFive();
     }
 
     public int[] generateNumber() {
@@ -47,14 +47,10 @@ public class RacingCarController {
     }
 
     public void printEachGameResult(ArrayList<Integer> carScores, String[] carNameArray) {
-        for (int i = 0; i < carNameArray.length; i++) {
-            Input.printEachGameResult(carScores, carNameArray);
-        }
+        Input.printEachGameResult(carScores, carNameArray);
     }
 
-    public String getFinalWinner() {
-        String[] carNames = getCarArray();
-        ArrayList<Integer> carScores = getCarScore();
+    public String getFinalWinner(String[] carNames, ArrayList<Integer> carScores) {
         return game.getFinalWinner(carNames, carScores);
     }
 
@@ -69,6 +65,6 @@ public class RacingCarController {
             makeMoves(generateNumber());
             Input.printEachGameResult(getCarScore(), getCarArray());
         }
-        printFinalWinner(getFinalWinner());
+        printFinalWinner(getFinalWinner(getCarArray(), getCarScore()));
     }
 }

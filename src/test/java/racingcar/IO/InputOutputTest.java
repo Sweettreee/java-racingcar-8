@@ -15,7 +15,7 @@ public class InputOutputTest extends IOTest {
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
-        systemIn("car1,car2,car3\n3\n");
+        systemIn("car1,car2,car3\n1\n");
         startCapture();
         racingCarController = new RacingCarController();
     }
@@ -68,23 +68,20 @@ public class InputOutputTest extends IOTest {
     }
 
     @Test
-    void 자동차이름_시도횟수_실행결과_출력() {
+    void 게임경기_차수별_출력() {
         // given
         String testResult = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-                + "car1,car2,car3\n"
-                + "시도할 횟수는 몇 회인가요?\n3\n\n실행 결과"
-                + "\ncar1 : ---\ncar2 : \ncar3 : -" + System.lineSeparator();
+                + "시도할 횟수는 몇 회인가요?\ncar1 : ---\ncar2 : \ncar3 : -\n" + System.lineSeparator();
 
         ArrayList<Integer> testList = new ArrayList<>();
         testList.add(3);
         testList.add(0);
         testList.add(1);
 
-        String[] carNames = {"car1", "car2", "car3"};
+        String[] carNameArray = {"car1", "car2", "car3"};
 
         // when
-        racingCarController.gameRun();
-        racingCarController.printEachGameResult(testList, carNames);
+        racingCarController.printEachGameResult(testList, carNameArray);
 
         // then
         assertThat(getCapturedOutput()).isEqualTo(testResult);
@@ -93,7 +90,8 @@ public class InputOutputTest extends IOTest {
     @Test
     void 최종_결과_출력() {
         // given
-        String testString = "최종 우승자 : car1, car2";
+        String testString = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+                + "시도할 횟수는 몇 회인가요?\n최종 우승자 : car1, car2";
         String[] testArray = {"car1", "car2", "car3"};
         ArrayList<Integer> testList = new ArrayList<>();
         testList.add(3);
@@ -101,8 +99,7 @@ public class InputOutputTest extends IOTest {
         testList.add(1);
 
         // when
-        ArrayList<String> finalWinners = racingCarController.getFinalWinner(testArray, testList);
-        String winners = racingCarController.concatWinners();
+        String winners = racingCarController.getFinalWinner(testArray, testList);
         racingCarController.printFinalWinner(winners);
 
         assertThat(getCapturedOutput()).isEqualTo(testString);
