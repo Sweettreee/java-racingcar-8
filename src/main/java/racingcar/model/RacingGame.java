@@ -13,7 +13,11 @@ public class RacingGame {
         return GameTryNumber;
     }
 
-    public int generateRandomNumber() {
-        return Randoms.pickNumberInRange(0, 9);
+    public int[] generateRandomNumber(int GameTryNumber) {
+        int[] randomNumbers = new int[GameTryNumber];
+        for (int i = 0; i < GameTryNumber; i++) {
+            randomNumbers[i] = Randoms.pickNumberInRange(0, 9);
+        }
+        return randomNumbers;
     }
 }

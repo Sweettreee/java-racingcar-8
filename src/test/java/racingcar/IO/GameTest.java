@@ -17,9 +17,11 @@ public class GameTest extends IOTest {
 
     @Test()
     void 난수생성() {
-        int simulatedNumber = racingCarController.generateNumber();
+        int[] simulatedNumber = racingCarController.generateNumber();
 
-        assertThat(simulatedNumber).isBetween(0, 9);
+        for (int i = 0; i < simulatedNumber.length; i++) {
+            assertThat(simulatedNumber[i]).isBetween(0, 9);
+        }
     }
 
     @Test

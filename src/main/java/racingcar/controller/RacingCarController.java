@@ -20,12 +20,20 @@ public class RacingCarController {
         return game.getGameTryNumber();
     }
 
+    public int getCarNameArrayLength() {
+        return car.getCarNameArray().length;
+    }
+
     public boolean isNameUnderFive() {
         return car.isUnderFive();
     }
 
-    public int generateNumber() {
-        return game.generateRandomNumber();
+    public int[] generateNumber() {
+        return game.generateRandomNumber(getCarNameArrayLength());
+    }
+
+    public void makeMoves() {
+
     }
 
     public void gameRun() {
