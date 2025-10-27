@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
 import racingcar.view.Input;
@@ -22,5 +23,13 @@ public class RacingCarController {
 
     public boolean isNameUnderFive() {
         return car.isUnderFive();
+    }
+
+    public ArrayList<Boolean>[] makeWholeMoves(int numberOfMoves) {
+        return game.makeMoves(numberOfMoves);
+    }
+
+    public void gameRun() {
+
     }
 }
