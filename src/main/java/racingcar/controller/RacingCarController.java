@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.ArrayList;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingGame;
 import racingcar.view.Input;
@@ -24,7 +25,7 @@ public class RacingCarController {
         return car.getCarNameArray().length;
     }
 
-    public int[] getCarScore() {
+    public ArrayList<Integer> getCarScore() {
         return car.getCarScore();
     }
 
@@ -36,11 +37,13 @@ public class RacingCarController {
         return game.generateRandomNumber(getCarNameArrayLength());
     }
 
-    public void makeMoves(int[] numbers, int GameTryNumber) {
-        for (int i = 0; i < GameTryNumber; i++) {
-            car.updateCarScores(numbers);
-        }
+    public void makeMoves(int[] randomNumbers) {
+        car.updateCarScores(randomNumbers);
     }
+
+//    public void getFinalWinner(String[] carNames, int[] carScores) {
+//
+//    }
 
     public void gameRun() {
 

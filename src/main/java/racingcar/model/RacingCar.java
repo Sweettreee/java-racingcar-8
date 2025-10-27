@@ -1,14 +1,19 @@
 package racingcar.model;
 
+import java.util.ArrayList;
+
 public class RacingCar {
     private final String carNames;
     private final String[] carNameArray;
-    private int[] carScore;
+    private ArrayList<Integer> carScore;
 
     public RacingCar(String carNames) {
         this.carNames = carNames;
         this.carNameArray = carNames.split(",");
-        carScore = new int[carNames.length()];
+        carScore = new ArrayList<>();
+        for (int i = 0; i < carNameArray.length; i++) {
+            carScore.add(0);
+        }
     }
 
     public String getCarNames() {
@@ -19,7 +24,7 @@ public class RacingCar {
         return carNameArray;
     }
 
-    public int[] getCarScore() {
+    public ArrayList<Integer> getCarScore() {
         return carScore;
     }
 
@@ -41,7 +46,12 @@ public class RacingCar {
 
     public void updateCarScores(int[] randomNumber) {
         for (int i = 0; i < carNameArray.length; i++) {
-            carScore[i] += makeMove(randomNumber[i]);
+            int tmp = carScore.get(i);
+            carScore.set(i, makeMove(randomNumber[i]) + tmp);
         }
     }
+
+//    public String getFinalWinner() {
+//
+//    }
 }
