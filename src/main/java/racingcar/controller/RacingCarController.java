@@ -6,12 +6,11 @@ import racingcar.model.RacingGame;
 import racingcar.view.Input;
 
 public class RacingCarController {
-    RacingCar car;
-    RacingGame game;
+    RacingCar car = new RacingCar(Input.getCarNames());
+    RacingGame game = new RacingGame(Input.getGameTryNumber());
 
     public RacingCarController() {
-        car = new RacingCar(Input.getCarNames());
-        game = new RacingGame(Input.getGameTryNumber());
+        
     }
 
     public String getCarNames() {

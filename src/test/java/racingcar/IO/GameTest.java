@@ -12,7 +12,7 @@ public class GameTest extends IOTest {
 
     @BeforeEach
     void setUp() {
-        systemIn("car1,car2,car3\n3\n");
+        systemIn("car1,car2,car3\n1\n1\n1\n1\n1\n");
         racingCarController = new RacingCarController();
     }
 
@@ -24,8 +24,8 @@ public class GameTest extends IOTest {
         int[] simulatedNumber = racingCarController.generateNumber();
 
         // then
-        for (int i = 0; i < simulatedNumber.length; i++) {
-            assertThat(simulatedNumber[i]).isBetween(0, 9);
+        for (int num : simulatedNumber) {
+            assertThat(num).isBetween(0, 9);
         }
     }
 
