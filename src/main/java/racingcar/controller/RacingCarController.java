@@ -41,9 +41,13 @@ public class RacingCarController {
         car.updateCarScores(randomNumbers);
     }
 
-//    public void getFinalWinner(String[] carNames, int[] carScores) {
-//
-//    }
+    public ArrayList<String> getFinalWinner(String[] carNames, ArrayList<Integer> carScores) {
+        return game.getFinalWinner(carNames, carScores);
+    }
+
+    public String concatWinners() {
+        return game.concatWinners();
+    }
 
     public void gameRun() {
 
