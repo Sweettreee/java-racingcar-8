@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.controller.RacingCarController;
 
@@ -62,18 +61,5 @@ public class InputOutputTest extends IOTest {
 
         // then
         assertThat(simulatedArray).isEqualTo(testArray);
-    }
-
-
-    @DisplayName("문자열을 구분자로 나누는 테스트")
-    @Test
-    void basic() {
-        String names = "car1,car2,car3";
-
-        String[] namesArr = names.split(",");
-
-        assertThat(namesArr)
-                .isNotEmpty()
-                .containsExactlyInAnyOrder("car1", "car2", "car3");
     }
 }
