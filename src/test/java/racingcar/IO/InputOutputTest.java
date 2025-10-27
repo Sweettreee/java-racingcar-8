@@ -3,6 +3,8 @@ package racingcar.IO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,14 +14,16 @@ public class InputOutputTest extends IOTest {
     RacingCarController racingCarController;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws FileNotFoundException {
         systemIn("car1,car2,car3\n3\n");
+        startCapture();
         racingCarController = new RacingCarController();
     }
 
     @AfterEach
     void closeConsole() {
         Console.close();
+        stopCapture();
     }
 
     @Test
@@ -61,5 +65,33 @@ public class InputOutputTest extends IOTest {
 
         // then
         assertThat(simulatedArray).isEqualTo(testArray);
+    }
+
+    @Test
+    void 자동차이름_시도횟수_실행결과_출력() {
+        // given
+        String testResult = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
+                + "car1,car2,car3\n"
+                + "시도할 횟수는 몇 회인가요?\n3\n\n실행 결과"
+                + "\ncar1 : ---\ncar2 : \ncar3 : -" + System.lineSeparator();
+
+        ArrayList<Integer> testList = new ArrayList<>();
+        testList.add(3);
+        testList.add(0);
+        testList.add(1);
+
+        String[] carNames = {"car1", "car2", "car3"};
+
+        // when
+        racingCarController.gameRun();
+        racingCarController.printEachGameResult(testList, carNames);
+
+        // then
+        assertThat(getCapturedOutput()).isEqualTo(testResult);
+    }
+
+    @Test
+    void 최종_결과_출력() {
+
     }
 }
