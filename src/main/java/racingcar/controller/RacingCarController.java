@@ -24,6 +24,10 @@ public class RacingCarController {
         return car.getCarNameArray().length;
     }
 
+    public int[] getCarScore() {
+        return car.getCarScore();
+    }
+
     public boolean isNameUnderFive() {
         return car.isUnderFive();
     }
@@ -32,8 +36,10 @@ public class RacingCarController {
         return game.generateRandomNumber(getCarNameArrayLength());
     }
 
-    public void makeMoves() {
-
+    public void makeMoves(int[] numbers, int GameTryNumber) {
+        for (int i = 0; i < GameTryNumber; i++) {
+            car.updateCarScores(numbers);
+        }
     }
 
     public void gameRun() {
