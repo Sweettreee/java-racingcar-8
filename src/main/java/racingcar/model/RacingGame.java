@@ -25,7 +25,7 @@ public class RacingGame {
         return randomNumbers;
     }
 
-    public ArrayList<String> getFinalWinner(String[] carNames, ArrayList<Integer> carScores) {
+    public String getFinalWinner(String[] carNames, ArrayList<Integer> carScores) {
         int maxNumber = Collections.max(carScores);
         int maxIndex;
         while (true) {
@@ -37,10 +37,6 @@ public class RacingGame {
 
             winners.add(carNames[maxIndex]);
         }
-        return winners;
-    }
-
-    public String concatWinners() {
         finalWinner = String.join(", ", winners);
         return finalWinner;
     }

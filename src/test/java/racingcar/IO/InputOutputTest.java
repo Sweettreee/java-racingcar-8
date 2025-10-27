@@ -92,6 +92,19 @@ public class InputOutputTest extends IOTest {
 
     @Test
     void 최종_결과_출력() {
+        // given
+        String testString = "최종 우승자 : car1, car2";
+        String[] testArray = {"car1", "car2", "car3"};
+        ArrayList<Integer> testList = new ArrayList<>();
+        testList.add(3);
+        testList.add(3);
+        testList.add(1);
 
+        // when
+        ArrayList<String> finalWinners = racingCarController.getFinalWinner(testArray, testList);
+        String winners = racingCarController.concatWinners();
+        racingCarController.printFinalWinner(winners);
+
+        assertThat(getCapturedOutput()).isEqualTo(testString);
     }
 }

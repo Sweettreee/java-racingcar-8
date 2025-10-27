@@ -6,8 +6,13 @@ import racingcar.model.RacingGame;
 import racingcar.view.Input;
 
 public class RacingCarController {
-    RacingCar car = new RacingCar(Input.getCarNames());
-    RacingGame game = new RacingGame(Input.getGameTryNumber());
+    RacingCar car;
+    RacingGame game;
+
+    public RacingCarController() {
+        car = new RacingCar(Input.getCarNames());
+        game = new RacingGame(Input.getGameTryNumber());
+    }
 
     public String getCarNames() {
         return car.getCarNames();
@@ -29,8 +34,8 @@ public class RacingCarController {
         return car.getCarScore();
     }
 
-    public boolean isNameUnderFive() {
-        return car.isUnderFive();
+    public void isNameUnderFive() {
+        car.isUnderFive();
     }
 
     public int[] generateNumber() {
@@ -41,29 +46,29 @@ public class RacingCarController {
         car.updateCarScores(randomNumbers);
     }
 
-    public ArrayList<String> getFinalWinner(String[] carNames, ArrayList<Integer> carScores) {
-        return game.getFinalWinner(carNames, carScores);
-    }
-
-    public String concatWinners() {
-        return game.concatWinners();
-    }
-
-    public void printGameResultMessage() {
-        Input.printGameResultMessage();
-    }
-
-    public void printEachGameResult(ArrayList<Integer> carScores, String[] carNames) {
-        for (int i = 0; i < 1; i++) {
-            Input.printEachGameResult(carScores, carNames);
+    public void printEachGameResult(ArrayList<Integer> carScores, String[] carNameArray) {
+        for (int i = 0; i < carNameArray.length; i++) {
+            Input.printEachGameResult(carScores, carNameArray);
         }
     }
 
+    public String getFinalWinner() {
+        String[] carNames = getCarArray();
+        ArrayList<Integer> carScores = getCarScore();
+        return game.getFinalWinner(carNames, carScores);
+    }
+
+    public void printFinalWinner(String winners) {
+        Input.printFinalWinner(winners);
+    }
+
     public void gameRun() {
-        Input.printQuestionCarNames();
-        Input.printCarNames(getCarArray());
-        Input.printQuestionGameTryNumber();
-        Input.printGameTryNumber(getGameTryNumber());
         Input.printGameResultMessage();
+        isNameUnderFive();
+        for (int i = 0; i < getGameTryNumber(); i++) {
+            makeMoves(generateNumber());
+            Input.printEachGameResult(getCarScore(), getCarArray());
+        }
+        printFinalWinner(getFinalWinner());
     }
 }

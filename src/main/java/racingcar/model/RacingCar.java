@@ -28,13 +28,12 @@ public class RacingCar {
         return carScore;
     }
 
-    public boolean isUnderFive() {
+    public void isUnderFive() {
         for (String carName : carNameArray) {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("글자 수가 5를 넘어 유효하지 않습니다.");
             }
         }
-        return true;
     }
 
     public int makeMove(int num) {
